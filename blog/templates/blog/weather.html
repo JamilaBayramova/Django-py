@@ -1,0 +1,14 @@
+{% extends "blog/base_generic.html" %}
+{% block content %}
+  <h2>Weather Forecast</h2>
+  <form method="post">
+    {% csrf_token %}
+    <input type="text" name="city" placeholder="Enter city">
+    <button type="submit">Get Weather</button>
+  </form>
+  {% if weather_data %}
+    <h3>{{ weather_data.name }}</h3>
+    <p>Temperature: {{ weather_data.main.temp }}K</p>
+    <p>Weather: {{ weather_data.weather.0.description }}</p>
+  {% endif %}
+{% endblock %}
